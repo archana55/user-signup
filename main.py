@@ -90,8 +90,9 @@ def validateemail(email):
 @app.route("/hello")
 def hello():
     username = request.args.get('name')
-    
-    return '<h1>Welcome, ' +cgi.escape(username)+ '!</h1>'
+    template = jinja_env.get_template('welcome.html')
+    return template.render(username = cgi.escape(username))
+#    return '<h1>Welcome, ' +cgi.escape(username)+ '!</h1>'
 
 
 
